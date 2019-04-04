@@ -5,13 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="563252494522-hccd5ve2teth35uns0s1hckah9dqr0nb.apps.googleusercontent.com">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
 
 <body>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <style>
+        .card {
+            margin: 2rem 2rem;
+            margin-bottom: 1.5rem; 
+            box-sizing: border-box;
+            box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+        }
+    </style>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"">
             <a class="navbar-brand" href="#">HacktivGit</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,42 +33,63 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" id="myRepos">My Repos</a>
                             <a class="dropdown-item" id="myStarredRepos">My Starred Repos</a>
-                        <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+
+                    <li class="nav-item nav-link">
+                        <a href="#" onclick="signOut();">Sign out</a>
                     </li>
                 </ul>
         </nav>
-
         <div class="row">
             <div class="col">
-                <div id="repos">
-
-                </div>
+                    <div id="repos">
+    
+                    </div>
             </div>
 
             <div class="col">
-                <form class="form-inline" method="GET" style="margin-top: 1.5rem; margin-bottom: 1.5rem" id="search-repos">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search User Repos" id="username" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <div id="search-box">
+                    <form class="form-inline" method="GET" style="margin-top: 1.5rem; margin-bottom: 1.5rem" id="search-repos">
+                        <input type="text" placeholder="Search User Repos" id="username" aria-label="Search" style="margin-right: 1rem">
+                        <button class="btn btn--white" type="submit">Search</button>
+                    </form>
+                </div>
+    
+                    <div id="search-result">
+    
+                    </div>
 
-                <div id="search-result">
-
+                <div >
+                    <div class="g-signin2" style="margin: 4rem 4rem" id="login" data-onsuccess="onSignIn"></div>
                 </div>
             </div>
             
             <div class="col">
+                <div class="row">
+                    <div id="new-repo-form">
+                        <h5 style="margin-top: 1.5rem">Create New Repo</h5>
+                        <form method="POST" style="margin: 1.5rem 1.5rem" onsubmit="newRepo(), this.reset()" >
+                            <div class="form-group">
+                                <label for="repo-name form-control" name='repo-name'>Repo Name</label>
+                                <input type="text" placeholder="Name" aria-label="Repo Name" style="margin-right: 1rem" id="new-repo-name"required>
+                            </div>
 
+                            <div class="form-group">
+                                <label for="repo-name form-control" name='repo-name'>Description</label>
+                                <textarea class="form-control" placeholder="Description" aria-label="Repo Name" style="margin-right: 1rem" rows="2" id="new-repo-desc"></textarea>
+                            </div>
+                            <button class="btn btn--white" type="submit">Create</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="./js/main.js"></script>
 </body>
 

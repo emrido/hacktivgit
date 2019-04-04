@@ -4,6 +4,10 @@ const cors = require('cors')
 const app = express();
 const port = process.env.PORT || 3000;
 const routes = require('./routes');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/hacktivgit', {useNewUrlParser: true});
+mongoose.set('useCreateIndex', true)
 
 app.use(cors())
 app.use(express.json());

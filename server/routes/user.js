@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controller/user');
+const userController = require('../controllers/user');
 
+
+router.post('/login', userController.verify);
 // GET /user/repos - List repositories that the authenticated user has explicit permission (:read, :write, or :admin) to access.
 router.get('/repos', userController.getMyRepos);
 // POST /user/repos - Create a new repository for the authenticated user.
